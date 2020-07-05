@@ -3,8 +3,9 @@
 <br>
 
 <p align="center">
-    <img src="https://github.com/trimstray/the-practical-linux-hardening-guide/blob/master/static/img/main_preview.jpg"
-        alt="Master">
+  <a href="https://github.com/trimstray/the-practical-linux-hardening-guide">
+    <img src="https://github.com/trimstray/the-practical-linux-hardening-guide/blob/master/static/img/main_preview.jpg" alt="Master">
+  </a>
 </p>
 
 <br>
@@ -14,26 +15,24 @@
 <br>
 
 <p align="center">
-  <a href="https://github.com/trimstray/the-practical-linux-hardening-guide/tree/master">
-    <img src="https://img.shields.io/badge/Branch-master-green.svg?longCache=true"
-        alt="Branch">
-  </a>
   <a href="https://github.com/trimstray/the-practical-linux-hardening-guide/pulls">
-    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?longCache=true"
-        alt="Pull Requests">
+    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?longCache=true" alt="Pull Requests">
   </a>
-  <a href="http://www.gnu.org/licenses/">
-    <img src="https://img.shields.io/badge/License-GNU-blue.svg?longCache=true"
-        alt="License">
+  <a href="LICENSE.md">
+    <img src="https://img.shields.io/badge/License-MIT-lightgrey.svg?longCache=true" alt="MIT License">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://twitter.com/trimstray" target="_blank">
+    <img src="https://img.shields.io/twitter/follow/trimstray.svg?logo=twitter">
   </a>
 </p>
 
 <div align="center">
   <sub>Created by
   <a href="https://twitter.com/trimstray">trimstray</a> and
-  <a href="https://github.com/trimstray/the-practical-linux-hardening-guide/graphs/contributors">
-    contributors
-  </a>
+  <a href="https://github.com/trimstray/the-practical-linux-hardening-guide/graphs/contributors">contributors</a>
 </div>
 
 <br>
@@ -43,8 +42,8 @@
 # Table of Contents
 
 - **[Introduction](#introduction)**
-  - [General Disclaimer](#general-disclaimer)
-  - [The Importance of Linux Hardening](#the-importance-of-linux-hardening)
+  - [Prologue](#prologue)
+  - [The Importance of Hardening Linux](#the-importance-of-hardening-linux)
   - [How to Harden Linux](#how-to-harden-linux)
   - [Which Distribution Should be Used](#which-distribution-should-be-used)
   - [How to Read This Guide](#how-to-read-this-guide)
@@ -64,7 +63,7 @@
 
 ## Introduction
 
-### General Disclaimer
+### Prologue
 
 **[The Practical Linux Hardening Guide](https://trimstray.github.io/the-practical-linux-hardening-guide/)** provides a high-level overview of hardening GNU/Linux systems. It is not an official standard or handbook but it _touches_ and _uses_ industry standards.
 
@@ -80,11 +79,7 @@ A few rules for this project:
 - some hardening rules/descriptions can be done better
 - you can think of it as a checklist
 
-Please also remember:
-
-  > This guide also contains my comments that may differ from certain industry principles. If you are not sure what to do please see **[Policy Compliance](#policy-compliance)**.
-
-This guide use following [OpenSCAP](https://www.open-scap.org/) configurations:
+The Practical Linux Hardening Guide use following [OpenSCAP](https://www.open-scap.org/) configurations:
 
 - [U.S. Government Commercial Cloud Services (C2S) baseline inspired by CIS v2.1.1](https://static.open-scap.org/ssg-guides/ssg-rhel7-guide-C2S.html)
 
@@ -93,6 +88,10 @@ This guide use following [OpenSCAP](https://www.open-scap.org/) configurations:
 - [Red Hat Enterprise Linux 7 Security Technical Implementation Guide (STIG)](https://www.stigviewer.com/stig/red_hat_enterprise_linux_7/)
 
   > The requirements are derived from the (NIST) 800-53 and related documents.
+
+Please also remember:
+
+  > This guide contains my comments that may differ from certain industry principles. If you are not sure what to do please see **[Policy Compliance](#policy-compliance)**.
 
 ### The Importance of Hardening Linux
 
@@ -108,6 +107,12 @@ You need to harden your system to protect your assets as much as possible. Why i
 
 In my opinion, you should drop all non-industry policies, articles, manuals, and others especially on production environments and standalone home servers. These lists exist to give a false sense of security and aren't based on authority standards.
 
+<p align="center">
+  <a href="https://github.com/trimstray/the-practical-linux-hardening-guide">
+    <img src="https://github.com/trimstray/the-practical-linux-hardening-guide/blob/master/static/img/meme_01.png" alt="Master">
+  </a>
+</p>
+
 There are a lot of great GNU/Linux hardening policies available to provide safer operating systems compatible with security protocols. For me, CIS and the STIGs compliances are about the best prescriptive guides - but of course you can choose a different one (e.g. PCI-DSS, DISA).
 
   > Most of all you should use [Security Benchmarks/Policies](#policy-compliance) which describe consensus best practices for the secure configuration of target systems.
@@ -118,7 +123,7 @@ On the other hand, these standards are complicated checklists (often for newbies
 
   > You should use a rational approach because more is not better. Each environment is different, so even though security rules should all work in theory, sometimes things will not work as expected.
 
-Hardening is not a simple process. You must devote a lot of time. Here are general rules following common best practices:
+Hardening is not a simple process. Here are general rules following common best practices:
 
 - never use root account for anything that does not require it
 - only `sudo` individual commands
@@ -169,6 +174,22 @@ Levels of understanding:
 - _Solution_ and _policies_ are always compliant with the standard and on this basis, make changes
 - _Comments_ helps you figure out what you can change or add to the _solution_
 - _Useful resources_ provide deeper understanding
+
+If you do not have the time to read hundreds of articles (just like me) this multipurpose handbook may be useful. This handbook does not get into all aspects of GNU/Linux hardening. I tried to put external resources in many places in this handbook in order to dispel any suspicion that may exist.
+
+I did my best to make this guid a single and consistent (but now I know that is really hard). It's organized in an order that makes logical sense to me.
+
+Do not treat this hardening guide as revealed knowledge. You should take a scientific approach when reading this document. If you have any doubts and disagree with me, please point out my mistakes. You should to discover cause and effect relationships by asking questions, carefully gathering and examining the evidence, and seeing if all the available information can be combined in to a logical answer.
+
+I create this handbook for one more reason. Rather than starting from scratch in, I putting together a plan for answering your questions to help you find the best way to do things and ensure that you don't repeat my mistakes from the past.
+
+So, what's most important:
+
+- ask a questions about something that you observe
+- do background research
+- do tests with an experiments
+- analyze and draw conclusions
+- communicate results (for us!)
 
 ### Okay. Let's start, 3, 2, 1... STOP!
 
@@ -289,7 +310,7 @@ Thanks [@artem-sidorenko](https://github.com/artem-sidorenko)!
 
 If you find something which doesn't make sense, or something doesn't seem right, please make a pull request and please add valid and well-reasoned explanations about your changes or comments.
 
-Before adding a pull request, please see the **[contributing guidelines](CONTRIBUTING.md)**.
+Before adding a pull request, please see the **[contributing guidelines](.github/CONTRIBUTING.md)**.
 
 If this project is useful and important for you or if you really like _The Practical Linux Hardening Guide_, you can bring **positive energy** by giving some **good words** or **supporting this project**. Thank you!
 
